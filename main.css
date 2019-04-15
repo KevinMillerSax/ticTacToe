@@ -1,6 +1,7 @@
 body{
     font-family: 'Noto Sans', sans-serif;
     text-align: center;
+    
 }
 
 header{
@@ -9,6 +10,7 @@ header{
 
 #grid-box{
     display: grid;
+    justify-content: center;
     width: 500px;
     height: 500px;
     margin: 0 auto;
@@ -32,4 +34,31 @@ header{
 
 h2{
     height: 60px; 
+}
+
+@media only screen and (max-width:768px){
+    #grid-box{
+        display: grid;
+        justify-content: center;
+        margin: 0 auto;
+        width: 250px;
+        height: 250px;
+    }
+
+    #grid-box>div{
+        border:2px solid black;
+        border-radius:3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+    }
+    header{
+        font-size: 25px;
+    }
+
+    h2{
+        height: 20px;
+    }
+    
 }

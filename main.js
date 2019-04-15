@@ -2,7 +2,7 @@
 const WIN = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 
 /*------ app's state (variables) ------ */
-let playerOne, playerTwo, selectedNum, turn, counter, pointCount1, pointCount2, oldButton; 
+let playerOne, playerTwo, selectedNum, turn, counter, pointCount1, pointCount2, player1, player2;
 
 
 /*------ cached element references ------ */
@@ -15,13 +15,15 @@ const gameBoardEl = document.getElementById('grid-box');
 // gameBoardEl.addEventListener('click', characterClick);
 replayBtn.addEventListener('click', init);
 
+
+
 /*-------functions -------- */
 
 init();
 
 
 function init() {
-    oldButton = [];
+    
     playerOne = [];
     playerTwo = [];
     turn = true;
@@ -63,40 +65,50 @@ function render() {
         }
         pointCount1 = 0;
         pointCount2 = 0;
+        
     }
-    if (counter === 9) {
+    if (counter === 9 && msgEl.textContent === '') {
         msgEl.textContent = "It's a Tie!"
         toggleReset();
     }
 }
 
-
 function characterClick(evt) {
    
     selectedNum = evt.target;
-    
     if(selectedNum.classList.contains('clicked')){ 
         return;
     }
     let boxNum = selectedNum.id.slice(3);
- 
     boxNum = Number(boxNum);
 
-
-    if (turn) {
-        evt.target.style.background = "url('images/X.png')";
-        playerOne.push(boxNum);
-        oldButton.push(boxNum);
-    } else {
-        evt.target.style.background = "url('images/O.png')";
-        playerTwo.push(boxNum);
-        oldButton.push(boxNum);
+    if (window.matchMedia("only screen and (max-width:768px)").matches){
+        if (turn) {
+            evt.target.style.background = "url('images/smallX.png')";
+            playerOne.push(boxNum);
+        } 
+        else {
+            evt.target.style.background = "url('images/smallO.png')";
+            playerTwo.push(boxNum);
+        }
     }
+    else{
+        if (turn) {
+            evt.target.style.background = "url('images/X.png')";
+            playerOne.push(boxNum);  
+        } 
+        else {
+            evt.target.style.background = "url('images/O.png')";
+            playerTwo.push(boxNum);
+            
+        }
+    }
+    
     turn = !turn;
     counter++;
     selectedNum.classList.add('clicked');
-   
     render();
+    
 }
 
 function toggleReset() {
@@ -121,5 +133,5 @@ function clearBoard(){
  
 
 
- // re-size board so it fits on browser screen
+ 
     
