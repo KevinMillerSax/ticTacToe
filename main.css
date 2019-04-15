@@ -1,0 +1,35 @@
+body{
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+}
+
+header{
+    font-size: 30px;
+}
+
+#grid-box{
+    display: grid;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #685C59;
+    color: black;
+    border: 5px solid black;
+    border-radius: 9px; 
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+}
+#grid-box>div{
+    border: 5px solid black;
+    border-radius:3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: right;
+}
+/* #grid-box>div>img{
+    height:120px;
+} */
+
+h2{
+    height: 60px; 
+}
