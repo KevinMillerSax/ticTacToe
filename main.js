@@ -82,27 +82,15 @@ function characterClick(evt) {
     let boxNum = selectedNum.id.slice(3);
     boxNum = Number(boxNum);
 
-    if (window.matchMedia("only screen and (max-width:768px)").matches){
-        if (turn) {
-            evt.target.style.background = "url('images/smallX.png')";
-            playerOne.push(boxNum);
-        } 
-        else {
-            evt.target.style.background = "url('images/smallO.png')";
-            playerTwo.push(boxNum);
-        }
+    if (turn) {
+        evt.target.style.backgroundImage = "url('images/X.png')";
+        playerOne.push(boxNum);  
+    } 
+    else {
+        evt.target.style.backgroundImage = "url('images/O.png')";
+        playerTwo.push(boxNum); 
     }
-    else{
-        if (turn) {
-            evt.target.style.background = "url('images/X.png')";
-            playerOne.push(boxNum);  
-        } 
-        else {
-            evt.target.style.background = "url('images/O.png')";
-            playerTwo.push(boxNum);
-            
-        }
-    }
+   
     
     turn = !turn;
     counter++;
